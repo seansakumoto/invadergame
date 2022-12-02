@@ -1,28 +1,32 @@
 #pragma once
 
-#include"AbstractScene.h"
-
+#include"Scene.h"
+#include"Player.h"
+#include"Enemy.h"
 //シーンマネージャークラス
 //各シーンの切り替えを管理する。
-class Gamemain : public AdstractScene {
+class Gamemain : public Scene {
 
 private:
 
-	int* player; //プレイヤー
-	int* enemy[2]; //敵
+	
+
+	Player* player;
+	//Enemy* Enemy;
+	int g_GamemainImage;
+
+	
+	
 
 public:
-
-
 	Gamemain();
 
-	virtual ~Gamemain() {};
+public:
+	void Update() override;
+	void Draw() const override;
+	Scene* ChangeScene() override;
 
-	//描画以外の更新を実装する
-	virtual AdstractScene* Update() override;
 
-	//描画に関することを実装する
-	virtual void Draw() const override;
 
-	void HitCheck(); //当たり判定について
+
 };
